@@ -12,4 +12,12 @@
   - _Requisitos: 2.1, 2.2_
 
 - [ ] 3. Middleware de manejo de errores
-  - Respuesta genérica para errores no controlados
+  - Registrar un middleware de errores al final de `src/app.js`
+  - Responder 500 con `{ "error": "error interno" }` sin stack trace
+  - Test que fuerce un error y verifique el cuerpo de la respuesta
+  - _Requisitos: 3.1_
+
+- [ ] 4. Gate de cobertura
+  - Agregar `coverageThreshold` de 80 % de líneas en `jest.config.js`
+  - Cambiar el paso de pruebas en `ci.yml` a `npm test -- --coverage`
+  - _Requisitos: 3.2_

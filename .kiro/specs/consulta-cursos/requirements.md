@@ -34,4 +34,6 @@ Funcionalidad para consultar los cursos de la malla y el detalle de un curso con
 
 #### Criterios de aceptación
 
-3.1 El sistema debe responder rápido y manejar los errores de forma segura.
+3.1 SI ocurre un error no controlado al procesar una solicitud, EL sistema DEBE responder 500 con el cuerpo `{ "error": "error interno" }`, sin incluir stack trace ni rutas de archivos.
+
+3.2 SI la cobertura de líneas de las pruebas es menor a 80 %, EL pipeline DEBE fallar.
