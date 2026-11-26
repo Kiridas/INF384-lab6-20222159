@@ -11,7 +11,7 @@
   - Tests para 2.1 y 2.2
   - _Requisitos: 2.1, 2.2_
 
-- [ ] 3. Middleware de manejo de errores
+- [x] 3. Middleware de manejo de errores
   - Registrar un middleware de errores al final de `src/app.js`
   - Responder 500 con `{ "error": "error interno" }` sin stack trace
   - Test que fuerce un error y verifique el cuerpo de la respuesta

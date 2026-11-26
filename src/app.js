@@ -13,4 +13,16 @@ app.get('/health', (req, res) => {
 
 app.use('/cursos', require('./routes/cursos'));
 
+// Ruta auxiliar para verificar el middleware de errores en pruebas
+if (process.env.NODE_ENV !== 'production') {
+  app.get('/__test__/error', (req, res, next) => {
+    next(new Error('error forzado'));
+  });
+}
+
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
+  res.status(500).json({ error: 'error interno' });
+});
+
 module.exports = app;
