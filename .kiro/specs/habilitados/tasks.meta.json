@@ -7,6 +7,18 @@
         "chatSessionId": "sess_fd5a77d3-f191-4263-ac66-5d1f2f403eb1",
         "timestamp": 1795731063132
       }
+    ],
+    "2. Crear el servicio `src/services/habilitados.js`": [
+      {
+        "executionId": "1370ac5e-373a-4788-bea5-4987e1cacd61",
+        "chatSessionId": "sess_ca382ad8-b88f-4f70-9321-5e6286379f32",
+        "timestamp": 1795731425913
+      },
+      {
+        "executionId": "1370ac5e-373a-4788-bea5-4987e1cacd61",
+        "chatSessionId": "sess_ca382ad8-b88f-4f70-9321-5e6286379f32",
+        "timestamp": 1795731468513
+      }
     ]
   }
 }

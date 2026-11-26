@@ -1,12 +1,12 @@
 # Plan de implementación: Cursos habilitados
 
-- [ ] 1. Escribir las pruebas de `POST /habilitados` antes de implementar
+- [x] 1. Escribir las pruebas de `POST /habilitados` antes de implementar
   - Crear `tests/habilitados.test.js` con supertest sobre `src/app.js`, un test por cada fila de la tabla de Testing Strategy de design.md (criterios 1.1 a 4.2)
   - Para 3.2, forzar el error con `jest.spyOn` sobre `calcularHabilitados` de `src/services/habilitados.js` y verificar que el cuerpo sea exactamente `{ "error": "error interno" }`
   - No implementar código de producción en esta tarea: los tests deben fallar
   - _Requisitos: 1.1, 1.2, 1.3, 1.4, 2.1, 2.2, 2.3, 2.4, 3.1, 3.2, 3.3, 4.1, 4.2_
 
-- [ ] 2. Crear el servicio `src/services/habilitados.js`
+- [x] 2. Crear el servicio `src/services/habilitados.js`
   - Implementar `calcularHabilitados(aprobados)` con un Set de aprobados sobre `repositorio.listar()`
   - Incluir un curso si su id no está en aprobados y todos sus prerequisites sí están
   - Mantener el orden de `data/cursos.json` y devolver solo id, name, credits, cycle y type
