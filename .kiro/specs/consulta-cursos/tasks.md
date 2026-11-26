@@ -17,7 +17,7 @@
   - Test que fuerce un error y verifique el cuerpo de la respuesta
   - _Requisitos: 3.1_
 
-- [ ] 4. Gate de cobertura
+- [x] 4. Gate de cobertura
   - Agregar `coverageThreshold` de 80 % de líneas en `jest.config.js`
   - Cambiar el paso de pruebas en `ci.yml` a `npm test -- --coverage`
   - _Requisitos: 3.2_

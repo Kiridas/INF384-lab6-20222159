@@ -36,6 +36,18 @@
         "chatSessionId": "sess_9069bf00-ef82-4420-9617-1de52ea2b0ea",
         "timestamp": 1795730148389
       }
+    ],
+    "4. Gate de cobertura": [
+      {
+        "executionId": "ea2eebbf-89f9-4604-9158-d845fed6378c",
+        "chatSessionId": "sess_fd4f1a2d-5f12-4b2a-bacd-2a8c0be1e3ff",
+        "timestamp": 1795730176796
+      },
+      {
+        "executionId": "ea2eebbf-89f9-4604-9158-d845fed6378c",
+        "chatSessionId": "sess_fd4f1a2d-5f12-4b2a-bacd-2a8c0be1e3ff",
+        "timestamp": 1795730227420
+      }
     ]
   }
 }
