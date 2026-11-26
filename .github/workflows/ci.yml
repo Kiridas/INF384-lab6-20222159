@@ -22,7 +22,7 @@ jobs:
 
       - name: Ejecutar pruebas
         run: npm test -- --coverage
-        
+
   sca:
     runs-on: ubuntu-latest
     steps:
@@ -32,3 +32,16 @@ jobs:
           node-version: 22
       - name: Auditar dependencias (alta o critica bloquea)
         run: npm audit --audit-level=high
+
+  secretos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Instalar gitleaks
+        run: curl -sSfL https://github.com/gitleaks/gitleaks/releases/download/v8.21.2/gitleaks_8.21.2_linux_x64.tar.gz | tar -xz gitleaks
+      - name: Escanear secretos en todo el historial
+        run: ./gitleaks git --redact -v .
+
+        

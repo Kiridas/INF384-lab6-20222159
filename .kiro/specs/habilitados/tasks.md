@@ -23,12 +23,12 @@
   - Al terminar, `npm test -- --coverage` debe quedar en verde con cobertura de líneas de al menos 80 %
   - _Requisitos: 1.1, 2.2, 2.4, 3.1, 4.1, 4.2_
 
-- [ ] 5. Gate de SCA en `.github/workflows/ci.yml`
+- [X] 5. Gate de SCA en `.github/workflows/ci.yml`
   - Agregar un job `sca` que corra en pull_request y push a main con `npm ci` y `npm audit --audit-level=high`
   - No corregir dependencias en esta tarea
   - _Requisitos: 5.1_
 
-- [ ] 6. Gate de detección de secretos en `.github/workflows/ci.yml`
+- [X] 6. Gate de detección de secretos en `.github/workflows/ci.yml`
   - Agregar un job `secretos` con `actions/checkout@v4` y `fetch-depth: 0`
   - Descargar el binario de gitleaks v8.21.2 desde GitHub Releases (no usar gitleaks-action) y ejecutar `./gitleaks git --redact -v .`
   - No corregir hallazgos en esta tarea
