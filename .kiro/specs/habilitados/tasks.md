@@ -17,7 +17,7 @@
   - En el middleware de errores: `entity.too.large` responde 413 `{ "error": "solicitud demasiado grande" }`; `entity.parse.failed` responde 400 `{ "error": "JSON invalido" }`; cualquier otro error responde 500 `{ "error": "error interno" }` sin stack trace
   - _Requisitos: 2.1, 2.3, 3.2, 3.3_
 
-- [ ] 4. Crear el router `src/routes/habilitados.js` y montarlo en `/habilitados`
+- [x] 4. Crear el router `src/routes/habilitados.js` y montarlo en `/habilitados`
   - Validar en el orden de design.md: arreglo, elementos string, máximo 500, formato `^[A-Z0-9]{6}$`
   - Llamar a `calcularHabilitados` y responder 200
   - Al terminar, `npm test -- --coverage` debe quedar en verde con cobertura de líneas de al menos 80 %
