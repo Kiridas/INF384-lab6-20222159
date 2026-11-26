@@ -17,7 +17,7 @@ Spec: `.kiro/specs/habilitados/`. Pipeline: `.github/workflows/ci.yml` (jobs `bu
 | 4.2 SI algún elemento no es texto, EL sistema DEBE responder 400 | Tests `4.2 elemento número / booleano / null / objeto` | Bloquea | Pull request y main | [run 45903759976](https://github.com/Kiridas/INF384-lab6-20222159/actions/runs/45903759976) | [run 45904274136](https://github.com/Kiridas/INF384-lab6-20222159/actions/runs/45904274136) |
 | 5.1 SI npm audit reporta severidad alta o crítica, EL pipeline DEBE fallar | Job `sca`: `npm audit --audit-level=high`, umbral 0 vulnerabilidades altas o críticas | Bloquea | Pull request y main | [run 45904566814](https://github.com/Kiridas/INF384-lab6-20222159/actions/runs/45904566814) | [run 45905188682](https://github.com/Kiridas/INF384-lab6-20222159/actions/runs/45905188682) |
 | 5.2 SI gitleaks detecta un secreto, EL pipeline DEBE fallar | Job `secretos`: gitleaks v8.21.2 `gitleaks git` sobre todo el historial (`fetch-depth: 0`), umbral 0 hallazgos | Bloquea | Pull request y main | [run 45904883623](https://github.com/Kiridas/INF384-lab6-20222159/actions/runs/45904883623) | [run 45905360323](https://github.com/Kiridas/INF384-lab6-20222159/actions/runs/45905360323) |
-| 5.3 SI la cobertura de líneas es menor a 80 %, EL pipeline DEBE fallar | Job `build`: `npm test -- --coverage` con `coverageThreshold` de 80 % de líneas | Bloquea | Pull request y main | PENDIENTE_RUN_COBERTURA_ROJO | PENDIENTE_RUN_COBERTURA_VERDE |
+| 5.3 SI la cobertura de líneas es menor a 80 %, EL pipeline DEBE fallar | Job `build`: `npm test -- --coverage` con `coverageThreshold` de 80 % de líneas | Bloquea | Pull request y main | [run 45905627675](https://github.com/Kiridas/INF384-lab6-20222159/actions/runs/45905627675) (PR #1 no mergeado: tests en verde, cobertura de líneas 76.71 % < 80 %) | [run 45905360323](https://github.com/Kiridas/INF384-lab6-20222159/actions/runs/45905360323) |
 
 ## Diagnóstico de los runs en rojo
 
@@ -26,6 +26,7 @@ Spec: `.kiro/specs/habilitados/`. Pipeline: `.github/workflows/ci.yml` (jobs `bu
 | 45903759976 | Tests escritos antes de la implementación: `POST /habilitados` no existía (404) y un JSON malformado respondía 500 | Tareas 2, 3 y 4 de tasks.md (servicio, límite de 10 KB con manejo de errores, router con validaciones) |
 | 45904566814 | `lodash` fijado en 4.17.20 con vulnerabilidades altas (Prototype Pollution y Code Injection en `_.template`, afectan hasta 4.17.23) | Se fijó `lodash` en 4.18.1 con `--save-exact` en vez de aceptar `npm audit fix --force` a ciegas; se verificó con `npm audit` (0 vulnerabilidades) y con los 37 tests |
 | 45904883623 | gitleaks (regla `generic-api-key`) encontró `CATALOGO_API_KEY` en `config/ejemplo.env`, línea 4, commit `7506fec` del repo base | La clave se rotó y el valor se reemplazó por un placeholder. Como sigue en el historial, se registró solo esa huella en `.gitleaksignore` con su razón; cualquier secreto nuevo sigue bloqueando |
+| 45905627675 | PR #1 quitó los tests de habilitados: todos los tests pasan, pero la cobertura de líneas cae a 76.71 % y el umbral de 80 % bloquea | El PR se cerró sin mergear; en main la cobertura se mantiene sobre 80 % (run 45905360323) |
 
 ## Cambios a la propuesta de Kiro
 
@@ -35,3 +36,4 @@ Spec: `.kiro/specs/habilitados/`. Pipeline: `.github/workflows/ci.yml` (jobs `bu
 | requirements.md | Requisitos 6 a 8: gates solo "on every push to main" y "SHALL NOT deploy the service" | 5.1 a 5.3: el pipeline falla en pull request y en push a main | La política aplica a todo cambio que llega a main, así que el bloqueo debe ocurrir antes del merge. El pipeline no despliega nada, así que "no deploy" no se puede verificar |
 | design.md | Agregar fast-check como devDependency para pruebas de propiedades | Pruebas de ejemplo con Jest y supertest, sin dependencias nuevas | `tech.md` prohíbe dependencias que la tarea no exige, y cada dependencia amplía la superficie que audita el gate de SCA |
 | tests/habilitados.test.js | Mock virtual del servicio que se quitaba y reponía dentro de cada test (`jest.unmock`, `jest.resetModules`) | Tests contra la app real; solo el 3.2 usa `jest.spyOn` | Con el mock, la mayoría de tests corría contra un servicio falso que devolvía `[]`, y el resultado dependía del orden de ejecución |
+
