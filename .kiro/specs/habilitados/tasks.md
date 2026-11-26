@@ -12,7 +12,7 @@
   - Mantener el orden de `data/cursos.json` y devolver solo id, name, credits, cycle y type
   - _Requisitos: 1.1, 1.2, 1.3, 1.4_
 
-- [ ] 3. Límite de tamaño y manejo de errores en `src/app.js`
+- [x] 3. Límite de tamaño y manejo de errores en `src/app.js`
   - Cambiar a `express.json({ limit: '10kb' })`
   - En el middleware de errores: `entity.too.large` responde 413 `{ "error": "solicitud demasiado grande" }`; `entity.parse.failed` responde 400 `{ "error": "JSON invalido" }`; cualquier otro error responde 500 `{ "error": "error interno" }` sin stack trace
   - _Requisitos: 2.1, 2.3, 3.2, 3.3_
