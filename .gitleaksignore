@@ -1,0 +1,4 @@
+# CATALOGO_API_KEY expuesta en config/ejemplo.env desde el commit inicial del repo base.
+# La clave fue rotada: se revoco y la nueva vive solo en .env local (ignorado por git).
+# Se ignora solo esta huella historica; cualquier secreto nuevo sigue bloqueando el pipeline.
+7506fecff32b342baaa4aa5dcb595bb5ccc75634:config/ejemplo.env:generic-api-key:4
